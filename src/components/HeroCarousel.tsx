@@ -5,7 +5,6 @@ import Image from 'next/image';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft, faChevronRight, faCalendarCheck } from '@fortawesome/free-solid-svg-icons';
 import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
 import { cn } from '@/lib/utils';
 
 interface HeroCarouselProps {
@@ -21,25 +20,25 @@ export default function HeroCarousel({ className }: HeroCarouselProps) {
   const [touchEnd, setTouchEnd] = useState(0);
   const carouselRef = useRef<HTMLDivElement>(null);
 
-  // High-end event imagery with sophisticated messaging
+  // High-end event imagery with clean, minimalist messaging
   const slides = [
     {
       id: 1,
       image: '/images/1.jpg',
       alt: 'Elegant wedding ceremony setup with luxury floral arrangements and sophisticated decor',
-      badge: 'Bodas Exclusivas',
-      title: 'Momentos que Perduran para Siempre',
-      subtitle: 'Diseñamos experiencias únicas que reflejan la esencia de tu amor, con una atención impecable a cada detalle que trasciende lo ordinario.',
-      cta: 'Descubre Nuestras Bodas'
+      title: 'Momentos que Perduran para Siempre'
     },
     {
       id: 2,
       image: '/images/2.jpg',
       alt: 'Sophisticated event setup with elegant table arrangements and refined atmosphere',
-      badge: 'Eventos Exclusivos',
-      title: 'Elegancia que Inspira Distinción',
-      subtitle: 'Cada evento es una obra maestra cuidadosamente orquestada, donde la sofisticación y el refinamiento se encuentran para crear experiencias inolvidables.',
-      cta: 'Eventos de Lujo'
+      title: 'Elegancia que Inspira Distinción'
+    },
+    {
+      id: 3,
+      image: '/images/3.jpg',
+      alt: 'Luxury bridal portrait showcasing elegant wedding styling and sophisticated details',
+      title: 'La Belleza Está en los Detalles'
     }
   ];
 
@@ -85,6 +84,11 @@ export default function HeroCarousel({ className }: HeroCarouselProps) {
     return () => clearInterval(timer);
   }, []);
 
+  // Debug: Log current slide and total slides
+  useEffect(() => {
+    console.log(`Current slide: ${currentSlide + 1} of ${slides.length}`);
+  }, [currentSlide, slides.length]);
+
   return (
     <section id="hero" className={cn('relative h-screen overflow-hidden', className)}>
       {/* Carousel Container */}
@@ -120,40 +124,20 @@ export default function HeroCarousel({ className }: HeroCarouselProps) {
             {/* Content */}
             <div className="absolute inset-0 flex items-center justify-center">
               <div className="text-center text-white px-6 max-w-5xl mx-auto">
-                <Badge 
-                  variant="outline" 
-                  className="mb-6 border-white/30 text-white bg-white/10 backdrop-blur-sm text-sm font-garamond tracking-wider px-4 py-2"
-                >
-                  {slide.badge}
-                </Badge>
-                
-                <h1 className="text-4xl md:text-6xl lg:text-7xl xl:text-8xl text-title-primary mb-8 tracking-wide leading-tight">
+                <h1 className="text-4xl md:text-6xl lg:text-7xl xl:text-8xl text-title-primary mb-12 tracking-wide leading-tight">
                   {slide.title}
                 </h1>
-                
-                <p className="text-lg md:text-xl lg:text-2xl text-subtitle-elegant opacity-90 max-w-3xl mx-auto leading-relaxed mb-12">
-                  {slide.subtitle}
-                </p>
 
                 <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                  <Button
-                    onClick={openCalendly}
-                    size="lg"
-                    className="gradient-grapefruit text-accent-foreground hover:shadow-elegant-hover px-8 py-4 text-lg font-light tracking-wide transition-all duration-500 group"
-                  >
-                    <FontAwesomeIcon 
-                      icon={faCalendarCheck} 
-                      className="mr-3 h-5 w-5 group-hover:scale-110 transition-transform" 
-                    />
-                    Agendar Consulta
-                  </Button>
+
                   
                   <Button
+                    onClick={openCalendly}
                     variant="outline"
                     size="lg"
-                    className="border-white/30 text-white bg-white/10 backdrop-blur-sm hover:bg-white/20 px-8 py-4 text-lg font-light tracking-wide transition-all duration-300"
+                    className="cursor-pointer border-white/30 text-white bg-white/10 backdrop-blur-sm hover:bg-white/20 hover:border-white/50 hover:scale-105 px-8 py-4 text-lg font-light tracking-wide transition-all duration-300"
                   >
-                    {slide.cta}
+                    Agenda tu Cita
                   </Button>
                 </div>
               </div>
@@ -164,7 +148,7 @@ export default function HeroCarousel({ className }: HeroCarouselProps) {
         {/* Elegant Navigation Arrows - Hidden by default, show on hover, hidden on mobile */}
         <button
           onClick={prevSlide}
-          className="absolute left-8 top-1/2 transform -translate-y-1/2 text-white/70 hover:text-white transition-all duration-300 z-10 opacity-0 group-hover:opacity-100 hidden md:block"
+          className="cursor-pointer absolute left-8 top-1/2 transform -translate-y-1/2 text-white/70 hover:text-white transition-all duration-300 z-10 opacity-0 group-hover:opacity-100 hidden md:block"
           aria-label="Previous slide"
         >
           <div className="w-12 h-12 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center hover:bg-white/20 hover:scale-110 transition-all duration-300">
@@ -174,7 +158,7 @@ export default function HeroCarousel({ className }: HeroCarouselProps) {
         
         <button
           onClick={nextSlide}
-          className="absolute right-8 top-1/2 transform -translate-y-1/2 text-white/70 hover:text-white transition-all duration-300 z-10 opacity-0 group-hover:opacity-100 hidden md:block"
+          className="cursor-pointer absolute right-8 top-1/2 transform -translate-y-1/2 text-white/70 hover:text-white transition-all duration-300 z-10 opacity-0 group-hover:opacity-100 hidden md:block"
           aria-label="Next slide"
         >
           <div className="w-12 h-12 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center hover:bg-white/20 hover:scale-110 transition-all duration-300">
@@ -189,7 +173,7 @@ export default function HeroCarousel({ className }: HeroCarouselProps) {
               key={index}
               onClick={() => setCurrentSlide(index)}
               className={cn(
-                'transition-all duration-300 rounded-full',
+                'cursor-pointer transition-all duration-300 rounded-full',
                 index === currentSlide 
                   ? 'w-12 h-3 bg-white shadow-elegant' 
                   : 'w-3 h-3 bg-white/40 hover:bg-white/60 hover:scale-110'
