@@ -44,7 +44,7 @@ export default function Navigation({ className }: NavigationProps) {
           {/* Logo */}
           <div className="flex-shrink-0">
             <h1 className="text-2xl lg:text-3xl text-title-primary tracking-wide text-foreground">
-              <span className="text-gradient-grapefruit">Mediana Naranja</span>
+              <span className="text-gradient-grapefruit">Media Naranja</span>
             </h1>
           </div>
 

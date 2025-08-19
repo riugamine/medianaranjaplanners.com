@@ -13,10 +13,10 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Mediana Naranja Planners | Event Planning & Wedding Design",
+  title: "Media Naranja Planners | Event Planning & Wedding Design",
   description: "Creemos que un evento no debería ser solo bonito: debe sentirse. Más de una década creando celebraciones inolvidables en la Isla de Margarita.",
   keywords: "event planning, wedding planner, bodas, eventos corporativos, celebraciones, Isla de Margarita, Venezuela",
-  authors: [{ name: "Mediana Naranja Planners" }],
+  authors: [{ name: "Media Naranja Planners" }],
 };
 
 export default function RootLayout({

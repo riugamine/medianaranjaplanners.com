@@ -33,9 +33,8 @@ export default function Footer({ className }: FooterProps) {
           {/* Brand */}
           <div className="text-center md:text-left space-y-6">
             <div>
-              <h3 className="text-2xl md:text-3xl text-title-primary tracking-wide mb-2">
-                <span className="text-accent">Mediana Naranja</span>
-                <span className="text-primary-foreground/80 ml-2 font-garamond">Planners</span>
+              <h3 className="text-xl  text-title-primary text-center mb-2">
+                <span className="text-primary-foreground">Media Naranja</span>
               </h3>
               <Separator className="w-16 bg-accent opacity-60 md:mx-0 mx-auto" />
             </div>
@@ -48,7 +47,7 @@ export default function Footer({ className }: FooterProps) {
           {/* Navigation Links */}
           <div className="text-center space-y-6">
             <div>
-              <h4 className="text-xl text-title-secondary mb-2 text-primary-foreground">Navegación</h4>
+              <h4 className="text-xl text-title-secondary mb-2 text-primary-foreground text-center">Navegación</h4>
               <Separator className="w-12 mx-auto bg-accent opacity-60" />
             </div>
             <nav className="space-y-3">
@@ -79,10 +78,10 @@ export default function Footer({ className }: FooterProps) {
           {/* Social Media */}
           <div className="text-center md:text-right space-y-6">
             <div>
-              <h4 className="text-xl text-title-secondary mb-2 text-primary-foreground">Síguenos</h4>
+              <h4 className="text-xl text-title-secondary mb-2 text-primary-foreground text-center">Síguenos</h4>
               <Separator className="w-12 md:ml-auto mx-auto bg-accent opacity-60" />
             </div>
-            <div className="flex justify-center md:justify-end">
+            <div className="flex justify-center md:justify-center">
               <Button
                 variant="ghost"
                 asChild
@@ -100,12 +99,7 @@ export default function Footer({ className }: FooterProps) {
                       className="h-6 w-6 text-accent-foreground" 
                     />
                   </div>
-                  <div className="text-left">
-                    <p className="font-garamond text-primary-foreground">@medianaranjaplanners</p>
-                    <p className="text-sm text-primary-foreground/60 font-garamond">
-                      Descubre nuestros proyectos
-                    </p>
-                  </div>
+
                 </a>
               </Button>
             </div>
