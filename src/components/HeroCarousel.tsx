@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft, faChevronRight, faCalendarCheck } from '@fortawesome/free-solid-svg-icons';
@@ -17,6 +17,9 @@ interface HeroCarouselProps {
  */
 export default function HeroCarousel({ className }: HeroCarouselProps) {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [touchStart, setTouchStart] = useState(0);
+  const [touchEnd, setTouchEnd] = useState(0);
+  const carouselRef = useRef<HTMLDivElement>(null);
 
   // High-end event imagery with sophisticated messaging
   const slides = [
@@ -52,6 +55,30 @@ export default function HeroCarousel({ className }: HeroCarouselProps) {
     window.open('https://calendly.com/medianaranjaplanners', '_blank', 'noopener,noreferrer');
   };
 
+  // Touch handlers for mobile swipe
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchEnd(0); // Reset touchEnd
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > 50;
+    const isRightSwipe = distance < -50;
+
+    if (isLeftSwipe) {
+      nextSlide();
+    } else if (isRightSwipe) {
+      prevSlide();
+    }
+  };
+
   // Auto-advance slides with longer intervals for luxury feel
   useEffect(() => {
     const timer = setInterval(nextSlide, 7000);
@@ -61,7 +88,13 @@ export default function HeroCarousel({ className }: HeroCarouselProps) {
   return (
     <section id="hero" className={cn('relative h-screen overflow-hidden', className)}>
       {/* Carousel Container */}
-      <div className="relative h-full">
+      <div 
+        ref={carouselRef}
+        className="relative h-full group"
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
+      >
         {slides.map((slide, index) => (
           <div
             key={slide.id}
@@ -128,23 +161,23 @@ export default function HeroCarousel({ className }: HeroCarouselProps) {
           </div>
         ))}
 
-        {/* Elegant Navigation Arrows */}
+        {/* Elegant Navigation Arrows - Hidden by default, show on hover, hidden on mobile */}
         <button
           onClick={prevSlide}
-          className="absolute left-8 top-1/2 transform -translate-y-1/2 text-white/70 hover:text-white transition-all duration-300 z-10 group"
+          className="absolute left-8 top-1/2 transform -translate-y-1/2 text-white/70 hover:text-white transition-all duration-300 z-10 opacity-0 group-hover:opacity-100 hidden md:block"
           aria-label="Previous slide"
         >
-          <div className="w-12 h-12 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center group-hover:bg-white/20 group-hover:scale-110 transition-all duration-300">
+          <div className="w-12 h-12 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center hover:bg-white/20 hover:scale-110 transition-all duration-300">
             <FontAwesomeIcon icon={faChevronLeft} className="h-5 w-5" />
           </div>
         </button>
         
         <button
           onClick={nextSlide}
-          className="absolute right-8 top-1/2 transform -translate-y-1/2 text-white/70 hover:text-white transition-all duration-300 z-10 group"
+          className="absolute right-8 top-1/2 transform -translate-y-1/2 text-white/70 hover:text-white transition-all duration-300 z-10 opacity-0 group-hover:opacity-100 hidden md:block"
           aria-label="Next slide"
         >
-          <div className="w-12 h-12 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center group-hover:bg-white/20 group-hover:scale-110 transition-all duration-300">
+          <div className="w-12 h-12 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center hover:bg-white/20 hover:scale-110 transition-all duration-300">
             <FontAwesomeIcon icon={faChevronRight} className="h-5 w-5" />
           </div>
         </button>

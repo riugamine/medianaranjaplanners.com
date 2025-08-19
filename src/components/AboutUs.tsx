@@ -1,3 +1,5 @@
+'use client';
+
 import { Card, CardContent } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
 import { Badge } from '@/components/ui/badge';
@@ -22,15 +24,15 @@ export default function AboutUs({ className }: AboutUsProps) {
           >
             Nuestra Historia
           </Badge>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl text-title-primary text-foreground mb-8 tracking-wide">
-            Sobre <span className="text-gradient-grapefruit">Nosotros</span>
+          <h2 className="text-4xl md:text-5xl lg:text-6xl text-title-primary mb-8 tracking-wide">
+            <span className="text-muted-foreground">Sobre</span> <span className="text-gradient-grapefruit">Nosotros</span>
           </h2>
           <Separator className="w-32 mx-auto bg-accent opacity-60" />
         </div>
 
         {/* About Content - Minimalist Text Only */}
         <div className="max-w-4xl mx-auto mb-20">
-          <div className="prose prose-xl max-w-none text-center">
+          <div className="prose prose-xl max-w-none text-left">
             <p className="text-lg md:text-xl lg:text-2xl text-body-elegant text-foreground leading-relaxed mb-8">
               Creemos que un evento no debería ser solo bonito: debe sentirse. Con más de una 
               década creando celebraciones inolvidables, hemos aprendido que lo extraordinario 
@@ -65,9 +67,26 @@ export default function AboutUs({ className }: AboutUsProps) {
           <div className="mt-16 text-center">
             <Separator className="w-32 mx-auto bg-accent opacity-60 mb-6" />
             <p className="text-lg text-title-secondary text-foreground mb-2">Enith Dugarte</p>
-            <p className="text-sm font-garamond text-muted-foreground tracking-wider uppercase">
+            <p className="text-sm font-garamond text-muted-foreground tracking-wider uppercase mb-6">
               Fundadora & Directora Creativa
             </p>
+            
+            {/* Social Links */}
+            <div className="flex justify-center items-center space-x-4 text-sm font-garamond tracking-wider">
+              <button
+                onClick={() => window.open('https://www.instagram.com/medianaranjaplanners', '_blank', 'noopener,noreferrer')}
+                className="text-muted-foreground hover:text-foreground transition-colors duration-300 uppercase"
+              >
+                Instagram
+              </button>
+              <span className="text-muted-foreground/40">|</span>
+              <button
+                onClick={() => window.open('https://calendly.com/medianaranjaplanners', '_blank', 'noopener,noreferrer')}
+                className="text-muted-foreground hover:text-foreground transition-colors duration-300 uppercase"
+              >
+                Contacto
+              </button>
+            </div>
           </div>
         </div>
 
