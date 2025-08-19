@@ -114,14 +114,14 @@ export default function HeroCarousel({ className }: HeroCarouselProps) {
                 priority={index === 0}
               />
               {/* Sophisticated Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/50 to-black/60" />
+              <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/80 to-black/80" />
               <div className="absolute inset-0 gradient-cream opacity-15" />
             </div>
 
             {/* Content */}
             <div className="absolute inset-0 flex items-center justify-center">
               <div className="text-center text-white px-6 max-w-5xl mx-auto">
-                <h1 className="text-4xl md:text-6xl lg:text-7xl xl:text-8xl text-title-primary mb-12 tracking-wide leading-tight">
+                <h1 className="text-4xl md:text-6xl lg:text-7xl xl:text-8xl text-title-primary mb-6 tracking-wide leading-tight">
                   {slide.title}
                 </h1>
 
@@ -132,7 +132,7 @@ export default function HeroCarousel({ className }: HeroCarouselProps) {
                     onClick={openCalendly}
                     variant="outline"
                     size="lg"
-                    className="cursor-pointer border-white/30 text-white bg-white/10 backdrop-blur-sm hover:bg-white/20 hover:border-white/50 hover:scale-105 px-8 py-4 text-lg font-light tracking-wide transition-all duration-300"
+                    className="font-garamond cursor-pointer border-white/30 text-white bg-white/10 backdrop-blur-sm hover:bg-white/20 hover:border-white/50 hover:scale-105 px-4 py-4 text-lg font-light tracking-wide transition-all duration-300"
                   >
                     Agenda tu Cita
                   </Button>
