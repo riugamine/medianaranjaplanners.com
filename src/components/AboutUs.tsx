@@ -74,8 +74,8 @@ export default function AboutUs({ className }: AboutUsProps) {
           <div className="relative">
             <div className="relative h-[600px] rounded-2xl overflow-hidden shadow-elegant-hover">
               <Image
-                src="/api/placeholder/600/600"
-                alt="Enith Dugarte, fundadora de Mediana Naranja Planners"
+                src="/images/1.jpg"
+                alt="Elegant event setup showcasing Mediana Naranja Planners' sophisticated style and attention to detail"
                 fill
                 className="object-cover"
               />

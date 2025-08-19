@@ -22,30 +22,21 @@ export default function HeroCarousel({ className }: HeroCarouselProps) {
   const slides = [
     {
       id: 1,
-      image: '/api/placeholder/1920/1080',
-      alt: 'Elegant wedding ceremony with luxury floral arrangements',
+      image: '/images/1.jpg',
+      alt: 'Elegant wedding ceremony setup with luxury floral arrangements and sophisticated decor',
       badge: 'Bodas Exclusivas',
       title: 'Momentos que Perduran para Siempre',
-      subtitle: 'Diseñamos experiencias únicas que reflejan la esencia de tu amor, con una atención impecable a cada detalle.',
+      subtitle: 'Diseñamos experiencias únicas que reflejan la esencia de tu amor, con una atención impecable a cada detalle que trasciende lo ordinario.',
       cta: 'Descubre Nuestras Bodas'
     },
     {
       id: 2,
-      image: '/api/placeholder/1920/1080',
-      alt: 'Sophisticated corporate event with elegant decor',
-      badge: 'Eventos Corporativos',
-      title: 'Elegancia que Inspira Confianza',
-      subtitle: 'Transformamos espacios corporativos en ambientes sofisticados que comunican profesionalismo y distinción.',
-      cta: 'Eventos Empresariales'
-    },
-    {
-      id: 3,
-      image: '/api/placeholder/1920/1080',
-      alt: 'Intimate luxury celebration with refined details',
-      badge: 'Celebraciones Íntimas',
-      title: 'La Belleza Está en los Detalles',
-      subtitle: 'Cada celebración íntima es una obra de arte personalizada, donde cada elemento cuenta una historia única.',
-      cta: 'Celebraciones Personalizadas'
+      image: '/images/2.jpg',
+      alt: 'Sophisticated event setup with elegant table arrangements and refined atmosphere',
+      badge: 'Eventos Exclusivos',
+      title: 'Elegancia que Inspira Distinción',
+      subtitle: 'Cada evento es una obra maestra cuidadosamente orquestada, donde la sofisticación y el refinamiento se encuentran para crear experiencias inolvidables.',
+      cta: 'Eventos de Lujo'
     }
   ];
 
@@ -92,8 +83,8 @@ export default function HeroCarousel({ className }: HeroCarouselProps) {
                 priority={index === 0}
               />
               {/* Sophisticated Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/30 to-black/50" />
-              <div className="absolute inset-0 gradient-cream opacity-10" />
+              <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/50 to-black/60" />
+              <div className="absolute inset-0 gradient-cream opacity-15" />
             </div>
 
             {/* Content */}
