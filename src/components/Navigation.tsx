@@ -18,13 +18,18 @@ export default function Navigation({ className }: NavigationProps) {
   const navItems = [
     { name: 'Inicio', href: '#hero' },
     { name: 'Nosotros', href: '#about' },
-    { name: 'Contacto', href: '#contact' },
+    { name: 'Instagram', href: 'https://www.instagram.com/medianaranjaplanners', external: true },
+    { name: 'Contacto', href: 'https://calendly.com/medianaranjaplanners', external: true },
   ];
 
-  const scrollToSection = (href: string) => {
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+  const handleNavigation = (href: string, external?: boolean) => {
+    if (external) {
+      window.open(href, '_blank', 'noopener,noreferrer');
+    } else {
+      const element = document.querySelector(href);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
     }
     setIsMenuOpen(false);
   };
@@ -48,20 +53,13 @@ export default function Navigation({ className }: NavigationProps) {
             {navItems.map((item) => (
               <button
                 key={item.name}
-                onClick={() => scrollToSection(item.href)}
+                onClick={() => handleNavigation(item.href, item.external)}
                 className="text-muted-foreground hover:text-foreground font-garamond text-base tracking-wide transition-all duration-300 relative group"
               >
                 {item.name}
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-accent transition-all duration-300 group-hover:w-full"></span>
               </button>
             ))}
-            <button
-              onClick={() => scrollToSection('#contact')}
-              className="ml-4 text-accent hover:text-foreground font-garamond text-base tracking-wide transition-all duration-300 relative group"
-            >
-              Agendar Cita
-              <span className="absolute bottom-0 left-0 w-full h-0.5 bg-accent transition-all duration-300 group-hover:bg-foreground"></span>
-            </button>
           </div>
 
           {/* Mobile menu button */}
@@ -85,20 +83,13 @@ export default function Navigation({ className }: NavigationProps) {
                 {navItems.map((item) => (
                   <button
                     key={item.name}
-                    onClick={() => scrollToSection(item.href)}
+                    onClick={() => handleNavigation(item.href, item.external)}
                     className="block w-full text-left text-muted-foreground hover:text-foreground font-garamond text-lg tracking-wide transition-all duration-300 relative group py-2"
                   >
                     {item.name}
                     <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-accent transition-all duration-300 group-hover:w-full"></span>
                   </button>
                 ))}
-                <button
-                  onClick={() => scrollToSection('#contact')}
-                  className="block w-full text-left text-accent hover:text-foreground font-garamond text-lg tracking-wide transition-all duration-300 relative group py-2 mt-6"
-                >
-                  Agendar Cita
-                  <span className="absolute bottom-0 left-0 w-full h-0.5 bg-accent transition-all duration-300 group-hover:bg-foreground"></span>
-                </button>
               </div>
             </div>
           )}

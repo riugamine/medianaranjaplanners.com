@@ -1,7 +1,6 @@
 import Navigation from '@/components/Navigation';
 import HeroCarousel from '@/components/HeroCarousel';
 import AboutUs from '@/components/AboutUs';
-import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
 
 /**
@@ -19,9 +18,6 @@ export default function Home() {
       
       {/* About Us Section */}
       <AboutUs />
-      
-      {/* Contact Section */}
-      <Contact />
       
       {/* Footer */}
       <Footer />

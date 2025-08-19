@@ -48,11 +48,8 @@ export default function HeroCarousel({ className }: HeroCarouselProps) {
     setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
   };
 
-  const scrollToContact = () => {
-    const element = document.querySelector('#contact');
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
+  const openCalendly = () => {
+    window.open('https://calendly.com/medianaranjaplanners', '_blank', 'noopener,noreferrer');
   };
 
   // Auto-advance slides with longer intervals for luxury feel
@@ -107,7 +104,7 @@ export default function HeroCarousel({ className }: HeroCarouselProps) {
 
                 <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                   <Button
-                    onClick={scrollToContact}
+                    onClick={openCalendly}
                     size="lg"
                     className="gradient-grapefruit text-accent-foreground hover:shadow-elegant-hover px-8 py-4 text-lg font-light tracking-wide transition-all duration-500 group"
                   >

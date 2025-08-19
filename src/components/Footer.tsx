@@ -14,10 +14,14 @@ interface FooterProps {
  * Elegant footer with sophisticated design and smooth navigation
  */
 export default function Footer({ className }: FooterProps) {
-  const scrollToSection = (href: string) => {
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+  const handleNavigation = (href: string, external?: boolean) => {
+    if (external) {
+      window.open(href, '_blank', 'noopener,noreferrer');
+    } else {
+      const element = document.querySelector(href);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
     }
   };
 
@@ -50,21 +54,21 @@ export default function Footer({ className }: FooterProps) {
             <nav className="space-y-3">
               <Button
                 variant="ghost"
-                onClick={() => scrollToSection('#hero')}
+                onClick={() => handleNavigation('#hero')}
                 className="block w-full text-primary-foreground/70 hover:text-primary-foreground hover:bg-primary-foreground/10 font-light transition-all duration-300 py-2"
               >
                 Inicio
               </Button>
               <Button
                 variant="ghost"
-                onClick={() => scrollToSection('#about')}
+                onClick={() => handleNavigation('#about')}
                 className="block w-full text-primary-foreground/70 hover:text-primary-foreground hover:bg-primary-foreground/10 font-light transition-all duration-300 py-2"
               >
                 Nosotros
               </Button>
               <Button
                 variant="ghost"
-                onClick={() => scrollToSection('#contact')}
+                onClick={() => handleNavigation('https://calendly.com/medianaranjaplanners', true)}
                 className="block w-full text-primary-foreground/70 hover:text-primary-foreground hover:bg-primary-foreground/10 font-light transition-all duration-300 py-2"
               >
                 Contacto
