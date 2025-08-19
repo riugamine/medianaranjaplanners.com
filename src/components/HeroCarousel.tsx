@@ -1,9 +1,9 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import Image from 'next/image';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronLeft, faChevronRight, faCalendarCheck } from '@fortawesome/free-solid-svg-icons';
+import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 
@@ -42,9 +42,9 @@ export default function HeroCarousel({ className }: HeroCarouselProps) {
     }
   ];
 
-  const nextSlide = () => {
+  const nextSlide = useCallback(() => {
     setCurrentSlide((prev) => (prev + 1) % slides.length);
-  };
+  }, [slides.length]);
 
   const prevSlide = () => {
     setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
@@ -82,12 +82,9 @@ export default function HeroCarousel({ className }: HeroCarouselProps) {
   useEffect(() => {
     const timer = setInterval(nextSlide, 7000);
     return () => clearInterval(timer);
-  }, []);
+  }, [nextSlide]);
 
-  // Debug: Log current slide and total slides
-  useEffect(() => {
-    console.log(`Current slide: ${currentSlide + 1} of ${slides.length}`);
-  }, [currentSlide, slides.length]);
+
 
   return (
     <section id="hero" className={cn('relative h-screen overflow-hidden', className)}>

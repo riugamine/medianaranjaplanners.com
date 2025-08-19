@@ -1,6 +1,6 @@
 'use client';
 
-import { Card, CardContent } from '@/components/ui/card';
+import Image from 'next/image';
 import { Separator } from '@/components/ui/separator';
 import { Badge } from '@/components/ui/badge';
 import { cn } from '@/lib/utils';
@@ -109,10 +109,11 @@ export default function AboutUs({ className }: AboutUsProps) {
                 className="group relative aspect-square overflow-hidden rounded-lg shadow-elegant hover:shadow-elegant-hover transition-all duration-300 cursor-pointer"
                 onClick={() => window.open('https://www.instagram.com/medianaranjaplanners', '_blank', 'noopener,noreferrer')}
               >
-                <img
+                <Image
                   src={`/images/${index === 1 ? '1' : index === 2 ? '2' : index === 3 ? '3' : '1'}.jpg`}
                   alt={`Instagram post ${index} - Mediana Naranja Planners elegant event planning`}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  fill
+                  className="object-cover transition-transform duration-500 group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
